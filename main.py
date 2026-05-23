@@ -7,6 +7,11 @@ graph = nx.fast_gnp_random_graph(10, 0.3, directed=False)
 number_edges = graph.number_of_edges() #Stores the number of edges of the generated graph
 bol_connected = is_connected(graph) #checks if the generated graph is connected
 bol_euler = is_eulerian(graph) #checks if the generated graph contains an Euler's Circuit
+# Display degrees of vertices
+print("\nDegrees of vertices:")
+
+for node, degree in graph.degree():
+    print(f"Vertex {node}: Degree {degree}")
 
 if bol_connected:
     print(f"The generated 10 vertices graph is connected and contains {number_edges} edges")
@@ -41,17 +46,17 @@ for i in range(trials):
 
     random_graph = nx.fast_gnp_random_graph(10, 0.3)
 
-    # Count only connected graphs
+
     if nx.is_connected(random_graph):
 
         connected_graphs += 1
 
-        # Check if connected graph is Eulerian
+
         if nx.is_eulerian(random_graph):
 
             eulerian_connected_graphs += 1
 
-# Calculate probability
+
 if connected_graphs > 0:
 
     probability = eulerian_connected_graphs / connected_graphs
