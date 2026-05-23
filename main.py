@@ -30,7 +30,41 @@ try:
 except nx.exception.NetworkXError:
     pass
 
+#  Probability Estimation
 
+trials = 10000
+
+connected_graphs = 0
+eulerian_connected_graphs = 0
+
+for i in range(trials):
+
+    random_graph = nx.fast_gnp_random_graph(10, 0.3)
+
+    # Count only connected graphs
+    if nx.is_connected(random_graph):
+
+        connected_graphs += 1
+
+        # Check if connected graph is Eulerian
+        if nx.is_eulerian(random_graph):
+
+            eulerian_connected_graphs += 1
+
+# Calculate probability
+if connected_graphs > 0:
+
+    probability = eulerian_connected_graphs / connected_graphs
+
+    print("\n----- Probability Estimation -----")
+    print("Total random graphs generated:", trials)
+    print("Connected graphs:", connected_graphs)
+    print("Connected Eulerian graphs:", eulerian_connected_graphs)
+
+    print(
+        "Estimated Probability of Euler Circuit GIVEN connected graph:",
+        probability
+    )
 
 nx.draw(graph, with_labels=True)
 plt.show()
