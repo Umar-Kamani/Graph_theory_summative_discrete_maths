@@ -28,13 +28,6 @@ if bol_euler:
 else:
     print(f"The generated 10 vertices graph does not contain an Eulerian circuit")
 
-try:
-    eulerian_circuit_walk = list(nx.eulerian_circuit(graph))
-    if eulerian_circuit_walk:
-        print("The generated 10 vertices Euler Circuit graph has the following edge traversal sequence: ", eulerian_circuit_walk)
-except nx.exception.NetworkXError:
-    pass
-
 #  Probability Estimation
 
 trials = 10000
